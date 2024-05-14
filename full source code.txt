@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Table</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+
+body {
+    background-color: #121315;
+}
+
+#switchTable {
+    padding-top: 74px;
+    padding-bottom: 94px;
+    background-color: #121315;
+}
+
+
+/* Toggle Start */
+/* The switch - the box around the slider */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #7228c4;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  
+  width: 2em;
+  height: 2em;
+  left: 0.3em;
+  bottom: 0em;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 0px 20px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateX(1.6em);
+}
+
+.switch input:checked + .slider {
+  background: #474646;
+  background-color: #807e7e;
+}
+
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #b84fce;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(0em);
+  height: 1.4em;
+  width: 1.4em;
+  bottom: 0.3em;
+}
+
+.switch input:checked + .table-one .main-table-row {
+    display: none;
+}
+
+.ptable-main {
+    text-align: center;
+    padding: 52px 14px 28px 14px;
+    color: #fff;
+    border-top-left-radius: 38px;
+    border-bottom-left-radius: 38px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    position: relative;
+    min-height: 562px;
+    display: flex; 
+    flex-direction: column !important;
+    text-align: center;
+}
+
+.gradient {
+    background-color: #4646ac; 
+    background-image: linear-gradient(to bottom, #4646ac, #595758, #111017);
+}
+
+.gradient-two {
+    background-color: #293292; 
+    background-image: linear-gradient(to bottom, #293292, #A70D8E, #1E031C);
+}
+
+.ptable-head h2 {
+    font-weight: 600;
+}
+
+.ptable-head p {
+    font-size: 12px;
+    font-weight: 500;
+    color: #c7c7c7;
+}
+
+.p-no-discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.p-no-discount span {
+    display: inline-block;
+    padding: 6px 22px;
+    color: #fff;
+    border-radius: 8px;
+    background-color: #8B8FA8;
+    font-size: 14px;
+    margin-top: 16px;
+    white-space: nowrap;
+}
+
+.p-no-discount .btn {
+    padding: 9px 42px;
+    color: #000;
+    background-color: #FEFFFF;
+    font-weight: bold;
+    margin-top: 20px;
+    border-radius: 32px;
+    white-space: nowrap;
+}
+.p-no-discount .pro-btn {
+    padding: 7.02px 42px;
+}
+
+.p-week-details {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.p-week-details p:first-child {
+    color: #c7c7c7;
+}
+
+.p-week-details p:nth-child(2), .p-week-details p:nth-child(3) {
+    color: #c7c7c7;
+    font-weight: 500;
+}
+
+.caption {
+    color: #fff;
+}
+
+.ptable-price {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    width: 110px;
+}
+
+.ptable-price span:nth-child(2) {
+    text-align: center;
+    color: #fff;
+    font-size: 52px;
+    font-weight: 600;
+}
+
+.ptable-price span:first-child {
+    position: absolute;
+    top: 18.4px;
+    bottom: 105%;
+    left: 9%;
+    transform: translateX(-50%);
+    font-size: 20px;
+}
+
+.ptable-price span:last-child {
+    position: absolute;
+    bottom: 19%;
+    right: -8%;
+    transform: translateX(50%);
+    font-size: 14px;
+    color: #c7c7c7;
+}
+
+.p-no-discount p:first-child {
+    font-size: 12px;
+    color: #c7c7c7;
+}
+
+.border-radius-zero {
+    border-radius: 0;
+}
+
+.border-radius-topbottom {
+    border-top-right-radius: 38px;
+    border-bottom-right-radius: 38px;
+}
+
+@media screen and (max-width:992px) {
+.border-radius-topbottom {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 38px;
+}
+}
+
+.pro-pricing {
+    transform: scaleY(1.1);
+    border-radius: 30px;
+    min-height: 562px;
+}
+
+.expert-pricing {
+    border-right: 1px solid #939393;
+}
+
+@media screen and (max-width:992px) {
+ .expert-pricing {
+    border-right: 0;
+}
+}
+
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width:992px) {
+.border-radius-topright {
+    border-top-right-radius: 38px;
+    border-bottom-right-radius: 38px;
+    padding-bottom: 58px;
+}
+
+}
+
+.discount-price {
+    position: absolute;
+    top: 34px;
+    left: 0;
+    background-color: #406cdd;
+    padding: 2px 16px;
+    font-weight: 600;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    font-size: 14px;
+}
+
+.pro-price {
+    background-color: #841276 !important;
+}
+
+.switcher-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+.switcher-head span:first-child {
+    font-weight: 600;
+    font-size: 26px;
+    display: inline-block;
+    margin-right: 26px;
+    color: #fff;
+}
+
+.switcher-head .quarterly {
+    font-weight: 600;
+    font-size: 26px;
+    display: inline-block;
+    margin-left: 26px;
+    color: #fff;
+}
+
+.switcher-head-main p {
+    color: #22D655;
+    font-weight: 500;
+    font-size: 26px;
+    margin-top: 22px;
+}
+
+
+.table-container {
+     margin-top: 74px;
+}
+
+.ptable-main {
+    flex-grow: 1;
+    height: 100%;
+}
+
+@media screen and (max-width:1400px) {
+    .table-container {
+       width: 1296px;
+       overflow-x: auto;
+       height: 700px;
+       padding-top: 30px;
+       padding-bottom: 70px;
+    }
+
+    .table-container-main {
+        overflow-x: auto;
+    }
+
+    .table-container {
+        margin-top: 40px;
+    } 
+}
+
+@media screen and (max-width:992px) {
+    .table-container {
+       width: auto;
+       overflow-x: unset;
+       height: auto;
+    }
+
+    .table-container-main {
+        overflow-x: auto;
+    }
+
+    .table-container {
+       padding-top: 0px;
+       padding-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .switcher-head-main p {
+        margin-bottom: 0;
+        font-size: 20px;
+    }
+
+    .switcher-head span:first-child {
+        font-size: 22px;
+    }
+
+    .switcher-head .quarterly {
+       font-size: 22px;
+    }
+
+}
+
+@media screen and (max-width:355px) {
+
+    .switcher-head span:first-child {
+        font-size: 20px;
+        margin-right: 18px;
+    }
+
+    .switcher-head .quarterly {
+       font-size: 20px;
+       margin-left: 18px;
+    }
+
+}
+
+
+
+/* Scrollbar */
+.table-container-main::-webkit-scrollbar{
+    width: 0.5rem;
+}
+.table-container-main::-webkit-scrollbar-track{
+    background-color: #fff;
+    border-radius: 10px;
+}
+.table-container-main::-webkit-scrollbar-thumb{
+    background-color: #841276;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-clip: content-box;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <section id="switchTable">
+        <div class="container">
+
+            <div class="text-center switcher-head-main">
+                
+                <div class="switcher-head">
+                    <span class="monthly">Monthly</span>
+                    <label class="switch">
+                        <input type="checkbox" id="toggleSwitch">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="quarterly">Quarterly</span>
+                </div>
+                <p>Save up to 21% with quarterly billing</p>
+            </div>
+    
+
+            <div class="table-container-main"> 
+
+                <div class="table-container">
+
+                <!-- Yearly Table Start here -->
+               <div class="table-one">
+   
+                   <div class="row gx-0 main-table-row">
+
+                       <div class="col-12 col-lg-3 p-row-flex">
+
+                           <div class="ptable-main gradient border-radius-topright">
+                               <div class="ptable-head">
+                                   <h2>Basic</h2>
+                                   <p>Good if you aren't in a hurry.</p> 
+                               </div>
+                               <div class="ptable-price">
+                                   <span>€</span>
+                                   <span>27</span>
+                                   <span>/lesson</span>
+                               </div>
+                               <div class="p-no-discount">
+                                   <p>Billed quarterly</p>
+                                   <span>You save <b>36€</b> quarterly</span>
+                                   <button class="btn">Subscribe</button>
+                               </div>
+                               <div class="p-week-details">
+                                   <p>1 class per week</p>
+                                   <p><span class="caption">Tailored lessons</span> for consistent improvement</p>
+                                   <p><span class="caption">24/7</span> Support</p>
+                               </div>
+                               <span class="discount-price">10% off</span>
+                           </div>
+       
+                       </div>
+       
+                       <div class="col-12 col-lg-3">
+       
+                           <div class="ptable-main gradient-two border-radius-zero pro-pricing">
+                               <div class="ptable-head">
+                                   <h2>Pro</h2>
+                                   <p>Best for constant and stable learning</p>
+                               </div>
+                               <div class="ptable-price">
+                                   <span>€</span>
+                                   <span>22</span>
+                                   <span>/lesson</span>
+                               </div>
+                               <div class="p-no-discount">
+                                   <p>Billed quarterly</p>
+                                   <span class="pro-price">You save <b>€144</b> quarterly</span>
+                                   <button class="btn pro-btn">Subscribe</button>
+                               </div>
+                               <div class="p-week-details">
+                                   <p style="color: #fff; font-size: 15px;"><b>✨ 2 lessons per week</b></p>
+                                   <p style="color: #fff; font-size: 15px;"><b>🎯 100% Personalized Lessons</b></p>
+                                   <p style="color: #fff; font-size: 15px;"><b>🌟 Unwavering 24/7 Support</b></p>
+                               </div>
+                               <span class="discount-price">21% off</span>
+                           </div>
+       
+                       </div>
+       
+                       <div class="col-12 col-lg-3">
+       
+                           <div class="ptable-main gradient border-radius-zero expert-pricing">
+                               <div class="ptable-head">
+                                   <h2>Expert</h2>
+                                   <p>Best for the most committed ones</p>
+                               </div>
+                               <div class="ptable-price">
+                                   <span>€</span>
+                                   <span>21</span>
+                                   <span>/lesson</span>
+                               </div>
+                               <div class="p-no-discount">
+                                   <p>Billed quarterly</p>
+                                   <span>You save <b>180€</b> quarterly</span>
+                                   <button class="btn">Subscribe</button>
+                               </div>
+                               <div class="p-week-details">
+                                   <p>3 lessons per week</p>
+                                   <p>Tailored Learning Experience</p>
+                                   <p>Continuous Assistance</p>
+                               </div>
+                               <span class="discount-price">19% off</span>
+                           </div>
+       
+                       </div>
+       
+                       <div class="col-12 col-lg-3">
+       
+                           <div class="ptable-main gradient border-radius-zero border-radius-topbottom">
+                               <div class="ptable-head">
+                                   <h2>Flex Lessons</h2>
+                                   <p>Good for unstable schedules</p>
+                               </div>
+                               <div class="ptable-price">
+                                   <span>€</span>
+                                   <span>30</span>
+                                   <span>/lesson</span>
+                               </div>
+                               <div class="p-no-discount">
+                                   <p>Billed one by one</p>
+                                   <span>No discout applied</span>
+                                   <button class="btn">Buy Now</button>
+                               </div>
+                               <div class="p-week-details">
+                                   <p>Buy as many classes as you want</p>
+                                   <p>Adjusted to your changing schedules</p>
+                                   <p>The lessons never expire</p>
+                               </div>
+                           </div>
+       
+                       </div>
+                   </div>
+               </div>
+               <!-- Yearly Table End here -->
+   
+   
+               <!-- Monthly Table Start here -->
+               <div class="table-two hidden">
+                   <div class="row gx-0 p-row-flex main-table-row">
+   
+                       <div class="col-12 col-lg-3">
+       
+                           <div class="ptable-main gradient border-radius-topright">
+                               <div class="ptable-head">
+                                   <h2>Basic</h2>
+                                   <p>Good if you aren't in a hurry.</p>
+                               </div>
+                               <div class="ptable-price">
+                                   <span>€</span>
+                                   <span>30</span>
+                                   <span>/lesson</span>
+                               </div>
+                               <div class="p-no-discount">
+                                   <p>Billed monthly</p>
+                                   <span>No discout applied</span>
+                                   <button class="btn">Subscribe</button>
+                               </div>
+                               <div class="p-week-details">
+                                   <p>1 class per week</p>
+                                   <p><span class="caption">Tailored lessons</span> for consistent improvement</p>
+                                   <p><span class="caption">24/7</span> Support</p>
+                               </div>
+                           </div>
+       
+                       </div>
+       
+                       <div class="col-12 col-lg-3">
+       
+                           <div class="ptable-main gradient-two border-radius-zero pro-pricing">
+                               <div class="ptable-head">
+                                   <h2>Pro</h2>
+                                   <p>Best for constant and stable learning</p>
+                               </div>
+                               <div class="ptable-price">
+                                   <span>€</span>
+                                   <span>28</span>
+                                   <span>/lesson</span>
+                               </div>
+                               <div class="p-no-discount">
+                                   <p>Billed monthly</p>
+                                   <span class="pro-price">No discount applied</span>
+                                   <button class="btn pro-btn">Subscribe</button>
+                               </div>
+                               <div class="p-week-details">
+                                <p style="color: #fff; font-size: 15px;"><b>✨ 2 lessons per week</b></p>
+                                <p style="color: #fff; font-size: 15px;"><b>🎯 100% Personalized Lessons</b></p>
+                                <p style="color: #fff; font-size: 15px;"><b>🌟 Unwavering 24/7 Support</b></p>
+                            </div>
+                           </div>
+       
+                       </div>
+       
+                       <div class="col-12 col-lg-3">
+       
+                           <div class="ptable-main gradient border-radius-zero expert-pricing">
+                               <div class="ptable-head">
+                                   <h2>Expert</h2>
+                                   <p>Best for the most committed ones</p>
+                               </div>
+                               <div class="ptable-price">
+                                   <span>€</span>
+                                   <span>26</span>
+                                   <span>/lesson</span>
+                               </div>
+                               <div class="p-no-discount">
+                                   <p>Billed monthly</p>
+                                   <span>No discout applied</span>
+                                   <button class="btn">Subscribe</button>
+                               </div>
+                               <div class="p-week-details">
+                                <p>3 lessons per week</p>
+                                <p>Tailored Learning Experience</p>
+                                <p>Continuous Assistance</p>
+                            </div>
+                           </div>
+       
+                       </div>
+       
+                       <div class="col-12 col-lg-3">
+       
+                           <div class="ptable-main gradient border-radius-zero border-radius-topbottom">
+                               <div class="ptable-head">
+                                   <h2>Flex Lessons</h2>
+                                   <p>Good for unstable schedules</p>
+                               </div>
+                               <div class="ptable-price">
+                                   <span>€</span>
+                                   <span>30</span>
+                                   <span>/lesson</span>
+                               </div>
+                               <div class="p-no-discount">
+                                   <p>Billed one by one</p>
+                                   <span>No discout applied</span>
+                                   <button class="btn">Buy Now</button>
+                               </div>
+                               <div class="p-week-details">
+                                <p>Buy as many classes as you want</p>
+                                <p>Adjusted to your changing schedules</p>
+                                <p>The lessons never expire</p>
+                            </div>
+                           </div>
+       
+                       </div>
+       
+                   </div>
+               </div>
+               <!-- Monthly Table End here -->
+   
+   
+               </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Get references to the toggle switch and the tables
+        const toggleSwitch = document.getElementById('toggleSwitch');
+        const tableOne = document.querySelector('.table-one');
+        const tableTwo = document.querySelector('.table-two');
+
+        // Add event listener to toggle switch
+        toggleSwitch.addEventListener('change', function() {
+            if (toggleSwitch.checked) {
+                // If switch is checked, show Table Two and hide Table One
+                tableTwo.classList.remove('hidden');
+                tableOne.classList.add('hidden');
+            } else {
+                // If switch is not checked, show Table One and hide Table Two
+                tableOne.classList.remove('hidden');
+                tableTwo.classList.add('hidden');
+            }
+        });
+
+
+    </script>
+</body>
+</html>
